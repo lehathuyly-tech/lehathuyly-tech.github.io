@@ -1,1 +1,1 @@
-# lehathuyly-tech.github.io
+# lely-tech.github.io
