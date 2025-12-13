@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hoàng Tử Bé</title>
+
+<style>
+/* FONT VÀ CƠ SỞ */
+body {
+    font-family: "Times New Roman", serif;
+    background: linear-gradient(#f7c652, #fbe8a6); /* Nền vàng ombre */
+    margin: 0;
+    padding: 40px;
+    line-height: 1.7;
+    color: #382c1b;
+    display: flex;
+    justify-content: center;
+    /* THÊM TÍNH NĂNG CUỘN MƯỢT */
+    scroll-behavior: smooth; 
+}
+
+/* CONTAINER GIỚI HẠN CHIỀU RỘNG */
+.main-content {
+    max-width: 800px;
+    width: 100%;
+}
+
+/* HEADER */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeDown 1.2s ease;
+}
+
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+img.cover {
+    width: 300px;
+    border-radius: 14px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    transition: transform 0.5s;
+    display: block;
+    margin: 15px auto;
+}
+
+img.cover:hover {
+    transform: scale(1.08) rotate(-1deg);
+}
+
+/* SECTION CHUNG */
+section {
+    padding: 22px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+    border: 2px solid #eabb5c;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: transform 0.4s, box-shadow 0.4s, background 0.5s; /* Thêm background vào transition */
+}
+
+section:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+}
+
+/* ĐỔI MÀU XEN KẼ */
+/* Màu 1: Kem nhạt (Mặc định) */
+#section1, #section3 {
+    background: #fff6d4; 
+}
+
+/* Màu 2: Vàng nhạt hơn (Hài hòa) */
+#section2, #section4 {
+    background: #fff1c0; 
+    border-color: #d1972c;
+}
+
+h2 {
+    color: #7a450f;
+    border-bottom: 1px dashed #d1972c;
+    padding-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* IMAGE IN CONTENT */
+.section-img {
+    width: 45%; 
+    height: auto;
+    max-width: 420px;
+    margin: 0; 
+    border-radius: 12px;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.25);
+    transition: transform 0.5s;
+}
+
+#section1 .section-img {
+    float: left;
+    margin-right: 20px;
+}
+
+#section2 .section-img {
+    float: right;
+    margin-left: 20px;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* BLOCKQUOTE */
+blockquote {
+    background: #ffeab0;
+    padding: 18px;
+    font-style: italic;
+    border-left: 6px solid #d1972c;
+    border-radius: 8px;
+    transition: transform 0.4s, background 0.4s;
+    margin: 20px 0;
+}
+
+blockquote:hover {
+    transform: scale(1.01);
+    background: #ffdf8c;
+}
+
+/* CSS CHO NÚT TƯƠNG TÁC (Jump Button) */
+#funfacts-btn {
+    background: #d1972c; /* Màu cam đậm hơn */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+    margin-top: 10px;
+}
+
+#funfacts-btn:hover {
+    background: #7a450f; /* Nâu đất khi hover */
+    transform: scale(1.05);
+}
+
+/* ICON BAY TRONG NỀN */
+.floating-icons {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+
+/* ICON */
+.icon {
+    position: absolute;
+    font-size: 20px;
+    animation: floatUp linear infinite;
+    opacity: 0.8;
+    transition: transform 0.3s, filter 0.3s;
+    cursor: pointer;
+}
+
+/* BAY NHANH + XOAY */
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-20vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* HOVER PHÁT SÁNG */
+.icon:hover {
+    transform: scale(1.4);
+    filter: drop-shadow(0 0 10px gold)
+            drop-shadow(0 0 20px white);
+}
+
+/* NỘI DUNG NẰM TRÊN ICON */
+.main-content {
+    position: relative;
+    z-index: 2;
+}
+
+
+
+
+</style>
+</head>
+
+<body>
+<div class="floating-icons" id="icon-layer">
+    <span class="icon">✨</span><span class="icon">⭐️</span><span class="icon">💫</span>
+    <span class="icon">🌙</span><span class="icon">✨</span><span class="icon">⭐️</span>
+    <span class="icon">🌹</span><span class="icon">💫</span><span class="icon">✨</span>
+    <span class="icon">🦊</span><span class="icon">⭐️</span><span class="icon">🌙</span>
+    <span class="icon">👑</span><span class="icon">✨</span><span class="icon">💫</span>
+</div>
+
+<div class="main-content">
+    <header>
+        <h1 style="color:#7a450f;">“Hoàng Tử Bé” – Antoine de Saint-Exupéry</h1>
+        <img src="htb.jpg" class="cover">
+        <p><strong>Tác giả:</strong> Antoine de Saint-Exupéry</p>
+    </header>
+
+    <section id="section1" class="clearfix">
+        <h2>
+            1. Tóm tắt nội dung
+            <button id="funfacts-btn" onclick="jumpToFunFacts()">Khám Phá Sự Thật Thú Vị</button>
+        </h2>
+        
+        <img src="a.jpg" class="section-img">
+        <p>
+            “Hoàng Tử Bé” kể về cuộc gặp gỡ giữa một phi công bị rơi xuống sa mạc
+            và một cậu bé đến từ hành tinh B-612. Qua hành trình chu du các hành tinh,
+            tác phẩm phơi bày những thói quen kỳ quặc của người lớn và làm nổi bật
+            giá trị của tình yêu, trách nhiệm và sự quan tâm.
+        </p>
+        <div class="content-wrapper" style="margin-top: 15px;">
+            <p>
+            Cậu bé rời hành tinh của mình vì mâu thuẫn với Bông hồng,
+            nhưng chuyến đi đã giúp cậu hiểu được ý nghĩa thực sự của sự gắn bó.
+            Cuối cùng, Hoàng Tử Bé chấp nhận rời bỏ cơ thể vật chất để trở về bên Bông hồng.
+            </p>
+        </div>
+        <div style="clear: both;"></div> 
+    </section>
+
+    <section id="section2" class="clearfix">
+        <h2>2. Cảm nhận cá nhân</h2>
+        <img src="b.jpg" class="section-img">
+        <p>
+            Với mình, “Hoàng Tử Bé” là câu chuyện dịu dàng nhưng thấm sâu.
+            Bài học từ chú cáo – về sự gắn bó và thấu hiểu – khiến người đọc
+            nhận ra rằng điều quý giá nhất không nằm ở mắt nhìn,
+            mà ở trái tim biết yêu thương.
+        </p>
+        <p>
+            Mỗi lần đọc lại, mình lại thấy được một góc nhìn mới về sự đơn giản,
+            về cách người lớn thường phức tạp hóa mọi thứ, đánh mất đi trí tưởng tượng.
+            Tác phẩm là lời nhắc nhở nhẹ nhàng về việc cần phải luôn nhìn mọi thứ
+            bằng con mắt của một đứa trẻ.
+        </p>
+         <div style="clear: both;"></div>
+    </section>
+
+    <section id="section3">
+        <h2>3. Fun Facts</h2>
+        <ul>
+            <li>Xuất bản năm 1943 tại Mỹ.</li>
+            <li>Được dịch sang hơn 300 ngôn ngữ.</li>
+            <li>Tác giả là một phi công ngoài đời thực.</li>
+        </ul>
+    </section>
+
+    <section id="section4">
+        <h2>4. Trích dẫn hay</h2>
+        <blockquote>
+            “Điều quan trọng nhất chỉ có thể nhìn thấy bằng trái tim.
+            Mắt thường không thể nhìn thấy được.”
+        </blockquote>
+    </section>
+</div>
+
+<script>
+
+const iconLayer = document.getElementById('icon-layer');
+const iconList = ['✨','🌙','⭐️','💫','🌹','🦊','👑'];
+
+for (let i = 0; i < 35; i++) {
+    const icon = document.createElement('span');
+    icon.className = 'icon';
+    icon.textContent =
+        iconList[Math.floor(Math.random() * iconList.length)];
+
+    /* vị trí rải rác */
+    icon.style.left = Math.random() * 100 + 'vw';
+    icon.style.bottom = Math.random() * 120 + 'vh';
+
+    /* lệch nhịp */
+    icon.style.animationDuration = (Math.random() * 4 + 4) + 's';
+    icon.style.animationDelay = Math.random() * 6 + 's';
+
+    /* kích thước khác nhau */
+    icon.style.fontSize = (Math.random() * 18 + 14) + 'px';
+
+    iconLayer.appendChild(icon);
+}
+
+
+
+
+/* nút cuộn fun facts */
+function jumpToFunFacts() {
+    const funFactsSection = document.getElementById('section3');
+    funFactsSection.scrollIntoView({ behavior: 'smooth' });
+}
+
+/* icon bay */
+const icons = document.querySelectorAll('.icon');
+
+icons.forEach(icon => {
+    icon.style.left = Math.random() * 100 + 'vw';
+    icon.style.animationDuration = (Math.random() * 4 + 4) + 's';
+});
+
+/* icon bay theo nhịp cuộn */
+window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+
+    icons.forEach(icon => {
+        const speed = 4 - scrollY / 800;
+        icon.style.animationDuration =
+            Math.max(1.5, speed) + 's';
+    });
+});
+
+
+
+
+    // HÀM MỚI: CUỘN ĐẾN PHẦN FUN FACTS
+    function jumpToFunFacts() {
+        const funFactsSection = document.getElementById('section3');
+        if (funFactsSection) {
+            funFactsSection.scrollIntoView({
+                behavior: 'smooth' // Cuộn mượt mà
+            });
+        }
+    }
+</script>
+
+</body>
+</html>
