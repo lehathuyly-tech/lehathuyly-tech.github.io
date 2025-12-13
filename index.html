@@ -109,6 +109,7 @@ h2 {
             drop-shadow(0 0 10px rgba(255, 215, 120, 0.8));
 }
 
+
 #section1 .section-img {
     float: left;
     margin-right: 20px;
@@ -207,6 +208,16 @@ blockquote:hover {
 }
 
 
+.scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.scroll.show {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 
 </style>
@@ -228,7 +239,8 @@ blockquote:hover {
         <p><strong>Tác giả:</strong> Antoine de Saint-Exupéry</p>
     </header>
 
-    <section id="section1" class="clearfix">
+    <section id="section1" 
+        class="clearfix scroll">
         <h2>
             1. Tóm tắt nội dung
             <button id="funfacts-btn" onclick="jumpToFunFacts()">Khám Phá Sự Thật Thú Vị</button>
@@ -251,7 +263,7 @@ blockquote:hover {
         <div style="clear: both;"></div> 
     </section>
 
-    <section id="section2" class="clearfix">
+    <section id="section2"class="clearfix scroll">
         <h2>2. Cảm nhận cá nhân</h2>
         <img src="b.jpg" class="section-img">
         <p>
@@ -269,7 +281,8 @@ blockquote:hover {
          <div style="clear: both;"></div>
     </section>
 
-    <section id="section3">
+    <section id="section3"
+        class="scroll">
         <h2>3. Fun Facts</h2>
         <ul>
             <li>Xuất bản năm 1943 tại Mỹ.</li>
@@ -278,7 +291,7 @@ blockquote:hover {
         </ul>
     </section>
 
-    <section id="section4">
+    <section id="section4" class="scroll">
         <h2>4. Trích dẫn hay</h2>
         <blockquote>
             “Điều quan trọng nhất chỉ có thể nhìn thấy bằng trái tim.
@@ -333,7 +346,6 @@ icons.forEach(icon => {
 
 
 
-
     // HÀM MỚI: CUỘN ĐẾN PHẦN FUN FACTS
     function jumpToFunFacts() {
         const funFactsSection = document.getElementById('section3');
@@ -343,6 +355,22 @@ icons.forEach(icon => {
             });
         }
     }
+
+
+const scrollItems = document.querySelectorAll('.scroll');
+
+window.addEventListener('scroll', () => {
+    scrollItems.forEach(item => {
+        const top = item.getBoundingClientRect().top;
+        const screenHeight = window.innerHeight;
+
+        if (top < screenHeight - 100) {
+            item.classList.add('show');
+        }
+    });
+});
+
+
 </script>
 
 </body>
