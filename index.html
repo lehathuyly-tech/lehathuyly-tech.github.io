@@ -329,16 +329,7 @@ icons.forEach(icon => {
     icon.style.animationDuration = (Math.random() * 4 + 4) + 's';
 });
 
-/* icon bay theo nhịp cuộn */
-window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
 
-    icons.forEach(icon => {
-        const speed = 4 - scrollY / 800;
-        icon.style.animationDuration =
-            Math.max(1.5, speed) + 's';
-    });
-});
 
 
 
